@@ -24,3 +24,7 @@ type Mutation{
     updateArticle(_id: ID!, input: ArticleInput): Article
     deleteArticle(_id: ID!) : Article
 }
+
+type Subscription {
+    articleAdded: Article
+}
