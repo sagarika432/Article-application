@@ -36,9 +36,15 @@ const prepare = (o) => {
 
 const resolvers = {
     Query: {
+        async getArticle(root, {
+            _id
+        }) {
+            return await Article.findById(_id);
+        },
         async allArticles() {
             return await Article.find();
-        }
+        },
+     
     },
     Mutation: {
         async createArticle(root, {
@@ -46,6 +52,23 @@ const resolvers = {
         }) {
 
             return prepare(await Article.create(input));
+        },
+        async updateArticle(root, {
+            _id,
+            input
+        }) {
+            return await Article.findOneAndUpdate({
+                _id
+            }, input, {
+                new: true
+            })
+        },
+        async deleteArticle(root, {
+            _id
+        }) {
+            return await Article.findOneAndRemove({
+                _id
+            });
         }
     }
 };

@@ -15,8 +15,12 @@ input ArticleInput {
 
 type Query {
   allArticles: [Article]
+  getArticle(_id: ID!): Article
+  
 }
 
 type Mutation{
     createArticle (input:ArticleInput) : Article
+    updateArticle(_id: ID!, input: ArticleInput): Article
+    deleteArticle(_id: ID!) : Article
 }
