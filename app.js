@@ -66,7 +66,7 @@ const resolvers = {
         async deleteArticle(root, {
             _id
         }) {
-            return await Article.findOneAndRemove({
+            return await Article.findOneAndDelete({
                 _id
             });
         }
