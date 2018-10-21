@@ -30,7 +30,9 @@ mongoose.connect(mongoURI ,{
 
 //load  article Model
 require('./models/Article');
+require('./models/User')
 const Article = mongoose.model('article');
+const User = mongoose.model('user');
 
 const prepare = (o) => {
     o._id = o._id.toString()

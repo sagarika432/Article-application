@@ -4,18 +4,45 @@ type Article {
     title: String
     # The Article text
     body: String
+    #The Article owner
+    writer: User
     
-    
-}
-input ArticleInput {
-    title:String!
-    body: String
     
 }
 
+input ArticleInput {
+    title:String!
+    body: String
+    writer: ID
+    
+}
+type User {
+    _id: ID!
+    # User emailid
+    email: String!
+    #First name of User
+    firstname: String
+    #Last name of User
+    lastname: String
+    
+    
+}
+input UserInput {
+    email:String!
+    firstname: String
+    lastname:String
+    
+    
+}
+
+input WriterByID {
+    _id:ID!
+}
 type Query {
   allArticles: [Article]
   getArticle(_id: ID!): Article
+  writer: User
+  getWriter (_id:ID!):User
   
 }
 
@@ -23,6 +50,7 @@ type Mutation{
     createArticle (input:ArticleInput) : Article
     updateArticle(_id: ID!, input: ArticleInput): Article
     deleteArticle(_id: ID!) : Article
+    createUser (input: UserInput) : User
 }
 
 type Subscription {
